@@ -5,12 +5,12 @@ dotenv.config();
 
 const envSchema = z.object({
   PORT: z.coerce.number().optional().default(3000),
-  DB_HOST: z.coerce.number().optional().default(5432),
+  DB_HOST: z.string().optional().default('localhost'),
+  DB_PORT: z.coerce.number().optional().default(5432),
   DEFAULT_DB: z.string(),
   DB_PASSWORD: z.string(),
   DB_USER: z.string().optional().default('postgres'),
   SECRET_TOKEN: z.string(),
-
 });
 
 const envParse = envSchema.safeParse(process.env);
