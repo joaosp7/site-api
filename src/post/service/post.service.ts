@@ -3,9 +3,10 @@ import { Posts } from '../entity/posts.entity';
 import { Repository } from 'typeorm';
 import { CreatePostDto } from '../dto/input/createPost.dto';
 import { UpdatePostDto } from '../dto/input/updatePost.dto';
-import { BadRequestException } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { SearchParamsDto } from '../dto/input/searchParams.dto';
 
+@Injectable()
 export class PostService {
   constructor(
     @InjectRepository(Posts)
@@ -45,6 +46,7 @@ export class PostService {
   }
 
   async findAll(searchParams?: SearchParamsDto) {
-    return;
+    //TODO implement searchParams use
+    return await this.postsRepository.find();
   }
 }
